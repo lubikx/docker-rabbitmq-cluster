@@ -45,5 +45,6 @@ services:
       - rabbitmq2
       - rabbitmq3
     ports:
-      - 15672:15672
-      - 5672:5672
+      - ${RABBITMQ_MANAGEMENT_PORT}:15672
+      - ${RABBITMQ_PORT}:5672
+      - ${HAPROXY_STATS_PORT}:1936

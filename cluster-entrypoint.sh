@@ -2,6 +2,8 @@
 
 set -e
 
+echo $ERLANG_COOKIE > /var/lib/rabbitmq/.erlang.cookie
+
 # Change .erlang.cookie permission
 chmod 400 /var/lib/rabbitmq/.erlang.cookie
 
@@ -23,4 +25,4 @@ else
 fi
 
 # Keep foreground process active ...
-tail -f /var/log/rabbitmq/*.log
+tail -f /dev/null

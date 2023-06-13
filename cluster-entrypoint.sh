@@ -2,13 +2,16 @@
 
 set -e
 
+# Get hostname from enviromant variable
+HOSTNAME=`env hostname`
+
+echo "Setting erlang cookie from ENV for host: " $HOSTNAME
+
 echo $ERLANG_COOKIE > /var/lib/rabbitmq/.erlang.cookie
 
 # Change .erlang.cookie permission
 chmod 400 /var/lib/rabbitmq/.erlang.cookie
 
-# Get hostname from enviromant variable
-HOSTNAME=`env hostname`
 echo "Starting RabbitMQ Server For host: " $HOSTNAME
 
 if [ -z "$JOIN_CLUSTER_HOST" ]; then

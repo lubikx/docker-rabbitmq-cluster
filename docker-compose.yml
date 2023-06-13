@@ -8,7 +8,6 @@ services:
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_DEFAULT_VHOST}
     volumes:
-      - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
 
@@ -20,7 +19,6 @@ services:
     environment:
       - JOIN_CLUSTER_HOST=rabbitmq1
     volumes:
-      - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
 
@@ -32,7 +30,6 @@ services:
     environment:
       - JOIN_CLUSTER_HOST=rabbitmq1
     volumes:
-      - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
 

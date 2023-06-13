@@ -2,8 +2,11 @@
 
 set -e
 
-# Get hostname from enviromant variable
+# Get hostname from environment variable
 HOSTNAME=`env hostname`
+
+# Get erlang cookie from environment variable
+ERLANG_COOKIE=`env ERLANG_COOKIE`
 
 echo "Setting erlang cookie from ENV for host: " $HOSTNAME
 

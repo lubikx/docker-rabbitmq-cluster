@@ -10,6 +10,7 @@ services:
       - ERLANG_COOKIE=${ERLANG_COOKIE}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
+    restart: always
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
 
   rabbitmq2:
@@ -22,6 +23,7 @@ services:
       - ERLANG_COOKIE=${ERLANG_COOKIE}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
+    restart: always
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
 
   rabbitmq3:
@@ -34,12 +36,14 @@ services:
       - ERLANG_COOKIE=${ERLANG_COOKIE}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
+    restart: always
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
 
   haproxy:
     image: haproxy:1.7
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    restart: always
     depends_on:
       - rabbitmq1
       - rabbitmq2
